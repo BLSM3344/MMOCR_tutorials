@@ -1,0 +1,13 @@
+{
+    "metainfo": {
+        "dataset_type": "TextDetDataset",
+        "task_name": "textdet",
+        "category": [
+            {
+                "id": 0,
+                "name": "text"
+            }
+        ]
+    },
+    "data_list": []
+}
