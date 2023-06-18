@@ -3,9 +3,9 @@ import os
 import glob
 import random
 
-folder_path = r"E:\数据集\CCPD"
-test_path = r"E:\数据集\CCPDdet\textdet_imgs\test"
-train_path = r"E:\数据集\CCPDdet\textdet_imgs\train"
+folder_path = r"E:\dataset\CCPD2019\CCPD2019\ccpd_base"
+test_path = r"E:\dataset\CCPDdet\textdet_imgs\test"
+train_path = r"E:\dataset\CCPDdet\textdet_imgs\train"
 
 # 用嵌套的方法进入每一个子文件夹
 def getFileList(dir, Filelist, ext=None):
@@ -23,7 +23,7 @@ def getFileList(dir, Filelist, ext=None):
         else:
             if dir.endswith(ext): # 检查文件后缀，看是否是满足要求的文件类型
                 if (random.randint(1, 10)) < 8:  # 划分数据集和测试集
-                    # 判断文件是否存在，CDPP数据集会有重复的图片放在不同的文件夹里
+                    # 判断文件是否存在，CCPD数据集会有重复的图片放在不同的文件夹里
                     if not (os.path.exists(os.path.join(train_path,dir.split('\\')[-1]))):
                         shutil.move(dir, train_path)
                 else:

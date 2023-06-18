@@ -2,3 +2,13 @@
 *.ipynb
 *.ipynb
 *.ipynb
+test/test12.jpg
+test/test11.jpg
+*.jpg
+*.pth
+*.mp4
+*.flv
+*.json
+*.lnk
+textdet_test.json
+*.json

@@ -1,6 +1,7 @@
 import json
 import os
 
+
 provinces = ["皖", "沪", "津", "渝", "冀", "晋", "蒙", "辽", "吉", "黑", "苏", "浙", "京", "闽", "赣", "鲁", "豫", "鄂",
              "湘", "粤", "桂", "琼", "川", "贵", "云", "藏", "陕", "甘", "青", "宁", "新", "警", "学", "O"]
 alphabets = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
@@ -10,8 +11,8 @@ ads = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q'
 
 data_list = []
 invalid = []
-folder_paths = [[r"E:\dataset\CCPDdet\textdet_imgs\train", "textdet_train.json"],
-                [r"E:\dataset\CCPDdet\textdet_imgs\test","textdet_test.json"]]
+folder_paths = [[r"E:\dataset\CCPDdet\textdet_imgs\train", "textrecog_train.json"],
+                [r"E:\dataset\CCPDdet\textdet_imgs\test","textrecog_test.json"]]
 pic_num = 0
 
 # print(folder_path.split('\\')[-2:])  测试返回的是不是：textdet_imgs\test，发现不是，返回的是textdet_imgs和test，是分开的
@@ -56,9 +57,9 @@ for folder_path,name in folder_paths:
                 text += ads[int(palte_text[7])]
             new_instance = {
                 # img_path是数据集根目录到图片之间的相对地址的，这里巨坑，手册也不说清楚，还好问题不大，看报错就知道了
-                "img_path": os.path.join(os.path.join(folder_path.split('\\')[-2], folder_path.split('\\')[-1]), fi),
-                "height": 1160,
-                "width": 720,
+                "img_path": os.path.join(folder_path.split('\\')[-1], fi),
+                "height": abs(y1-y2),
+                "width": abs(x1-x2),
                 "instances":
                     [
                         {
@@ -75,8 +76,8 @@ for folder_path,name in folder_paths:
     print(len(data_list))
     json_data = {
         "metainfo": {
-            "dataset_type": "TextDetDataset",
-            "task_name": "textdet",
+            "dataset_type": "TextRecogDataset",
+            "task_name": "textrecog",
             "category": [{"id": 0, "name": "text"}]
         },
         "data_list": data_list
